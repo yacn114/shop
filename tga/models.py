@@ -17,6 +17,7 @@ class Category(models.Model):
 
 # Create your models here.
 class Product(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
     name = models.CharField(max_length=40)
     description = models.CharField(max_length=500, default="", blank=True, null=True)
     price = models.DecimalField(default=0, decimal_places=0, max_digits=12)
