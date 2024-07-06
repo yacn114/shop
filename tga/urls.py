@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import returnd
+from .views import mount_data
 urlpatterns =[
-    path('',returnd),
+    path('',mount_data),
 ]

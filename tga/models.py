@@ -82,7 +82,21 @@ class InvoiceItem(models.Model):
     def __str__(self):
         return f"{self.quantity} x {self.product.name}"
     
+# New 
+# banner
+class banner(models.Model):
+    image = models.ImageField(upload_to="upload/banner")
+    name = models.CharField(max_length=255)
+    def __str__(self):
+        return self.name
 
+class product_sold(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    price_sold = models.IntegerField()
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    date = models.DateField(auto_now_add=True)
+    def __str__(self):
+        return self.product.name
 #===========================
 # @receiver(post_save, sender=Order)
 # def order_status_changed(sender, instance, **kwargs):
