@@ -26,19 +26,19 @@ class Product(models.Model):
     inventory = models.IntegerField(verbose_name="موجودی محصول")
     is_sale = models.BooleanField(verbose_name="تخفیف",default=False)
     sale_price = models.DecimalField(verbose_name="قیمت تخفیف",default=0, decimal_places=0, max_digits=12)
-    stars_count = models.IntegerField(
-        default=0,
-        validators=[MinValueValidator(1), MaxValueValidator(5)]
-    )
-
     def __str__(self):
         return self.name
+
+
+# New
+# Star Product
 class Stars(models.Model):
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
     star = models.IntegerField(verbose_name="تعداد ستاره")
 
     def __str__(self):
         return self.product.name
+
 # New
 # returned product  
 class returned(models.Model):
